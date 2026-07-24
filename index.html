@@ -310,7 +310,7 @@
                     <li>Entrega pronta pra publicar</li>
                     <li>Revisões incluídas</li>
                 </ul>
-                <div class="service-prazo">Prazo: 10 a 20 dias</div>
+                <div class="service-prazo">Prazo: 10 a 20 dias · <a href="#express" style="color:var(--accent)">express em 48h ↓</a></div>
                 <a class="btn btn-lime btn-md" href="https://wa.me/5521990228622?text=Oi%2C%20Fernando!%20Quero%20or%C3%A7ar%20um%20site%20%2F%20landing%20page." target="_blank" rel="noopener">SOLICITAR ORÇAMENTO</a>
             </article>
             <article class="service-card rv rv-d2">
@@ -338,6 +338,51 @@
                 </ul>
                 <div class="service-prazo">Prazo: por pacote</div>
                 <a class="btn btn-dark btn-md" href="https://wa.me/5521990228622?text=Oi%2C%20Fernando!%20Quero%20or%C3%A7ar%20edi%C3%A7%C3%A3o%20de%20v%C3%ADdeo." target="_blank" rel="noopener">SOLICITAR ORÇAMENTO</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ══ EXPRESS · COMPRA DIRETA ══ -->
+<section class="sec express" id="express">
+    <div class="hero-grid"></div>
+    <div class="express-glow"></div>
+    <div class="wrap">
+        <div class="sec-head">
+            <div class="rv"><span class="badge">↗ FECHE AGORA · SEM REUNIÃO</span></div>
+            <h2 class="h-display h-section rv rv-d1">Seu site novo no ar
+                <span class="alt">em 48 horas.</span>
+            </h2>
+            <p class="sub rv rv-d2">Escopo fechado, preço fechado, prazo fechado. Você adiciona ao carrinho, paga na hora e em até 2 dias úteis sua landing page está publicada.</p>
+        </div>
+        <div class="express-grid">
+            <article class="buy-card main rv">
+                <span class="buy-flag">ENTREGA EM 48H</span>
+                <h3>Site Express 48h</h3>
+                <p class="buy-sub">Landing page completa de 1 página, do briefing à publicação.</p>
+                <div class="buy-price"><b>R$ 699</b><span>PAGAMENTO ÚNICO</span></div>
+                <ul>
+                    <li>Design profissional alinhado à sua marca</li>
+                    <li>Mobile-first — perfeita em qualquer tela</li>
+                    <li>Botão de WhatsApp e seções de conversão</li>
+                    <li>Publicação inclusa (seu domínio ou subdomínio)</li>
+                    <li>1 rodada de ajustes incluída</li>
+                    <li>Briefing por formulário — sem reunião</li>
+                </ul>
+                <button class="btn btn-lime btn-lg" data-add="site">ADICIONAR AO CARRINHO</button>
+            </article>
+            <article class="buy-card rv rv-d1">
+                <h3>+ Vídeo de lançamento</h3>
+                <p class="buy-sub">Reel de 15–30s pra anunciar seu site novo nas redes.</p>
+                <div class="buy-price"><b>R$ 297</b><span>ADICIONAL</span></div>
+                <ul>
+                    <li>Formato vertical (Reels / Stories / TikTok)</li>
+                    <li>Edição com ritmo, gancho e legendas</li>
+                    <li>Com a identidade do seu site novo</li>
+                    <li>Entrega junto com o site</li>
+                </ul>
+                <button class="btn btn-ghost btn-lg" data-add="video">ADICIONAR AO CARRINHO</button>
+                <p class="buy-note">PAGAMENTO VIA <b>PIX</b> (NA HORA) OU CARTÃO · O PRAZO DE 48H COMEÇA NA CONFIRMAÇÃO</p>
             </article>
         </div>
     </div>
@@ -426,6 +471,55 @@
     </div>
 </footer>
 
+<!-- ══ Carrinho ══ -->
+<button class="cart-fab" id="cartFab" aria-label="Abrir carrinho">🛒 CARRINHO <span class="n">0</span></button>
+<div class="cart-ov" id="cartOv"></div>
+<aside class="cart-panel" id="cartPanel" aria-label="Carrinho de compras">
+    <div class="cart-head">
+        <h3>SEU PEDIDO_</h3>
+        <button class="cart-close" id="cartClose" aria-label="Fechar">×</button>
+    </div>
+
+    <!-- passo 1: itens -->
+    <div class="ck-step on" id="stepCart">
+        <div id="cartItems"></div>
+        <div class="cart-total"><span>TOTAL</span><b id="cartTotal">R$ 0</b></div>
+        <button class="btn btn-lime btn-lg" id="goPay">FINALIZAR PEDIDO →</button>
+        <p class="pix-hint">Entrega em até 48h úteis após a confirmação do pagamento.</p>
+    </div>
+
+    <!-- passo 2: forma de pagamento -->
+    <div class="ck-step" id="stepPay">
+        <button class="ck-back" data-to="cart">← VOLTAR AO CARRINHO</button>
+        <h3 class="mono" style="font-size:16px;margin-bottom:6px">COMO PREFERE PAGAR?</h3>
+        <div class="ck-pay-opts">
+            <button class="ck-pay" id="payPix">
+                <span class="ic">⚡</span>
+                <span><b>PIX — aprovação na hora</b><small>QR Code ou copia e cola, sem taxa</small></span>
+            </button>
+            <button class="ck-pay" id="payCard">
+                <span class="ic">💳</span>
+                <span><b>Cartão de crédito</b><small>Link de pagamento seguro</small></span>
+            </button>
+            <button class="ck-pay" id="payWa">
+                <span class="ic">💬</span>
+                <span><b>Fechar pelo WhatsApp</b><small>Seu pedido vai pronto na mensagem</small></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- passo 3: PIX -->
+    <div class="ck-step" id="stepPix">
+        <button class="ck-back" data-to="pay">← OUTRAS FORMAS DE PAGAMENTO</button>
+        <h3 class="mono" style="font-size:16px">PAGUE <span id="pixVal" style="color:var(--accent)"></span> VIA PIX</h3>
+        <div id="pixQr" aria-label="QR Code PIX"></div>
+        <button class="pix-copy" id="pixCopy"><span class="mono" style="font-size:12px;color:var(--accent)">COPIAR CÓDIGO PIX (COPIA E COLA)</span><br><br><code id="pixCode"></code></button>
+        <a class="btn btn-lime btn-lg" id="pixDone" href="#" target="_blank" rel="noopener" style="margin-top:18px">JÁ PAGUEI → ENVIAR COMPROVANTE</a>
+        <p class="pix-hint">Assim que o comprovante chegar, seu prazo de 48h começa a contar e eu te mando o formulário de briefing.</p>
+    </div>
+</aside>
+
+<script src="js/qrcode.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
