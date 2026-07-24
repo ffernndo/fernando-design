@@ -884,9 +884,7 @@ section { background: var(--bg); color: var(--text); }
 .pix-copy:hover { border-color: var(--accent); }
 .pix-hint { margin-top: 12px; font-size: 13px; color: var(--dim); }
 
-/* Perf & a11y */
-.sec, .cta-footer { content-visibility: auto; contain-intrinsic-size: auto 900px; }
-.hero { content-visibility: visible; }
+/* A11y */
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 @media (max-width: 860px) {
