@@ -39,6 +39,47 @@
         });
     });
 
+
+    /* ══ Serviços: índice + painel (padrão tablist) ══
+       No mobile o CSS mostra todos os painéis; aqui o script só age quando as
+       abas estão visíveis, para não esconder conteúdo em tela pequena. */
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.idx-item'));
+    if (tabs.length) {
+        var panes = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+
+        function select(i, foca) {
+            tabs.forEach(function (t, k) {
+                var on = k === i;
+                t.classList.toggle('on', on);
+                t.setAttribute('aria-selected', on);
+                t.tabIndex = on ? 0 : -1;
+                if (panes[k]) {
+                    panes[k].classList.toggle('on', on);
+                    if (on) {
+                        panes[k].removeAttribute('hidden');
+                        panes[k].classList.remove('anim');
+                        void panes[k].offsetWidth;   /* reinicia a animação */
+                        panes[k].classList.add('anim');
+                    } else {
+                        panes[k].setAttribute('hidden', '');
+                    }
+                }
+            });
+            if (foca) tabs[i].focus();
+        }
+
+        tabs.forEach(function (t, i) {
+            t.addEventListener('click', function () { select(i); });
+            t.addEventListener('keydown', function (e) {
+                var d = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1
+                      : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+                if (d) { e.preventDefault(); select((i + d + tabs.length) % tabs.length, true); }
+                else if (e.key === 'Home') { e.preventDefault(); select(0, true); }
+                else if (e.key === 'End') { e.preventDefault(); select(tabs.length - 1, true); }
+            });
+        });
+    }
+
     /* ══ Parallax (leve, rAF, respeita reduced-motion) ══ */
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduced) {

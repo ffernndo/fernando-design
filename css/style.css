@@ -121,8 +121,7 @@ section { background: var(--bg); color: var(--text); }
    #010f0c cairiam sobre fundo escuro e o contraste desabaria. Aqui o conjunto
    inteiro volta ao modo escuro, não só o acento. */
 .theme-light .badge,
-.theme-light .btn-dark,
-.theme-light .service-card.featured {
+.theme-light .btn-dark {
     --text: #ffffff;
     --muted: #c8d5cd;
     --muted-2: #c8d5cd;
@@ -308,6 +307,13 @@ section { background: var(--bg); color: var(--text); }
     color: var(--dim-2); margin-left: 20px; letter-spacing: .04em;
 }
 .theme-light .sec-head .ref { color: var(--dim); }
+/* No mobile o REF:// quebrava no meio da string e caía por cima da headline.
+   Abaixo de 700px ele vai para a própria linha, sob o badge. */
+@media (max-width: 700px) {
+    .sec-head .ref { display: block; margin: 16px 0 0; white-space: nowrap; }
+    .sec-head .badge { margin-bottom: 0; }
+    .sec-head > .rv:first-child { margin-bottom: clamp(28px, 5vw, 60px); }
+}
 .sec-head .sub { margin-top: clamp(24px, 3vw, 40px); }
 
 /* ── Pilares ── */
@@ -468,55 +474,83 @@ section { background: var(--bg); color: var(--text); }
 .depo-author b { display: block; font-size: 16px; }
 .depo-author span { font-size: 14px; color: var(--muted); }
 
-/* ── Serviços ── */
-.services-grid {
+/* ── Serviços · índice + painel ──
+   Substitui os quatro cards iguais em linha, que liam como tabela de preço de
+   SaaS. Aqui a seção respira: lista à esquerda, um serviço por vez à direita.
+   No mobile o índice some e os quatro painéis aparecem inteiros, empilhados —
+   sem clique obrigatório para ler o que está sendo vendido. */
+.split {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    align-items: stretch;
+    grid-template-columns: .72fr 1.28fr;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: start;
 }
-.service-card {
-    position: relative;
+
+.idx { display: grid; gap: 0; border-top: 1px solid var(--line); align-content: start; }
+.idx-item {
+    display: flex; align-items: baseline; gap: 16px;
+    width: 100%; padding: clamp(16px, 1.8vw, 22px) 4px;
+    border: 0; border-bottom: 1px solid var(--line);
+    background: none; text-align: left; cursor: pointer;
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(18px, 1.9vw, 24px); color: var(--muted);
+    transition: color .25s ease, padding-left .25s ease;
+}
+.idx-n {
+    font-family: var(--font-mono); font-weight: 700; font-size: 11px;
+    letter-spacing: .14em; color: var(--dim); flex: none;
+}
+.idx-item:hover { color: var(--text); padding-left: 10px; }
+.idx-item.on { color: var(--text); }
+.idx-item.on .idx-n { color: var(--accent-2); }
+.idx-note {
+    font-size: 13.5px; color: var(--dim); line-height: 1.7;
+    margin-top: 24px; max-width: 26em;
+}
+
+.panels { position: relative; }
+.pn {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius-card);
-    padding: 30px 26px;
-    display: flex; flex-direction: column;
-    min-height: 520px;
+    padding: clamp(28px, 3.4vw, 44px);
 }
-.service-card.featured {
-    background: #04241e;
-    border-color: transparent;
-    color: #ffffff;
+.pn[hidden] { display: none; }
+/* a animação só entra na troca de aba, nunca no carregamento: assim não há
+   risco de a seção aparecer meio transparente em quem chega rolando */
+.pn.anim { animation: pn-in .35s ease both; }
+@keyframes pn-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .pn.anim { animation: none; } }
+
+.pn-k { font-family: var(--font-mono); font-weight: 700; font-size: 11.5px; letter-spacing: .2em; color: var(--accent-2); }
+.pn h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.2vw, 42px); margin-top: 16px; }
+.pn-d { font-size: clamp(15px, 1.4vw, 17px); color: var(--muted); margin-top: 16px; line-height: 1.7; max-width: 46em; }
+.pn-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px;
+    margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line-soft);
 }
-.service-card.featured .service-desc,
-.service-card.featured li,
-.service-card.featured .service-list-label { color: #c8d5cd; }
-.service-card.featured li::before { color: #9ff690; }
-.service-flag {
-    position: absolute; top: -19px; left: 50%; transform: translateX(-50%);
-    height: 38px; padding: 0 20px;
-    display: inline-flex; align-items: center;
-    background: var(--accent); color: var(--accent-ink);
-    border-radius: 19px;
-    font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: .05em;
-    white-space: nowrap;
+.pn-grid b { font-size: 14.5px; display: block; }
+.pn-grid span { font-size: 13px; color: var(--muted); display: block; margin-top: 3px; }
+.pn-foot {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--line-soft);
 }
-.service-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; }
-.service-desc { margin-top: 18px; font-size: 16px; color: var(--muted); min-height: 48px; }
-.service-list-label {
-    margin-top: 28px;
-    font-family: var(--font-mono); font-weight: 700; font-size: 13px;
-    letter-spacing: .08em; color: var(--muted);
+.pn-foot > span { font-family: var(--font-mono); font-weight: 700; font-size: 11.5px; letter-spacing: .12em; color: var(--dim); }
+
+@media (max-width: 900px) {
+    .split { grid-template-columns: 1fr; }
+    .idx [role="tab"] { display: none; }
+    .idx { border-top: 0; }
+    .idx-note { margin: 0 0 8px; max-width: none; }
+    .panels { display: grid; gap: 18px; }
+    /* no mobile todo painel aparece: ler os quatro não pode depender de clique */
+    .pn[hidden] { display: block; }
+    .pn.anim { animation: none; }
 }
-.service-card ul { margin-top: 14px; display: grid; gap: 14px; }
-.service-card li { position: relative; padding-left: 24px; font-size: 15px; color: var(--muted); }
-.service-card li::before {
-    content: "✓"; position: absolute; left: 0;
-    color: var(--accent-2); font-weight: 700;
+@media (max-width: 560px) {
+    .pn-grid { grid-template-columns: 1fr; gap: 14px; }
+    .pn-foot .btn { width: 100%; }
 }
-.service-prazo { margin-top: auto; padding-top: 26px; font-size: 15px; font-weight: 700; }
-.service-card .btn { margin-top: 18px; width: 100%; }
 
 /* ── FAQ ── */
 .faq-list { display: grid; gap: 22px; }
@@ -845,7 +879,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .concept-card:hover .cc-img img { transform: scale(1.04); }
 
 /* ── Entregáveis por serviço ── */
-.service-card li b { color: var(--text); font-weight: 700; }
 .service-note {
     margin-top: 22px; padding-top: 18px;
     border-top: 1px solid var(--line-soft);
@@ -918,7 +951,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 /* ═══ Responsivo ═══ */
 @media (max-width: 1100px) {
     .works-grid { grid-template-columns: repeat(2, 1fr); }
-    .services-grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
     .concepts-grid { grid-template-columns: repeat(2, 1fr); }
     .concepts-grid .wide-row { grid-template-columns: 1fr 1fr; }
     .pilares-grid { grid-template-columns: repeat(2, 1fr); }
@@ -938,8 +970,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 @media (max-width: 640px) {
     .pilares-grid, .depo-grid, .works-grid,
     .concepts-grid, .concepts-grid .wide-row,
-    .services-grid, .cases-grid, .apps-row { grid-template-columns: 1fr; }
-    .service-card { min-height: 0; }
+    .cases-grid, .apps-row { grid-template-columns: 1fr; }
     .palette-row { grid-template-columns: repeat(2, 1fr); }
     .hero-actions .btn { width: 100%; }
     .proj-row { flex-wrap: wrap; gap: 12px; }
