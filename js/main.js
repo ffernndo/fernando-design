@@ -119,7 +119,7 @@
         function render() {
             fab.classList.toggle('show', cart.length > 0);
             var n = fab.querySelector('.n'); if (n) n.textContent = cart.length;
-            itemsEl.innerHTML = cart.length ? '' : '<div class="cart-empty">Seu carrinho está vazio. Adicione o Site Express ali em cima 👆</div>';
+            itemsEl.innerHTML = cart.length ? '' : '<div class="cart-empty">Seu carrinho está vazio. <a href="#express" class="link-live">Ver o Site Express 48h ↑</a></div>';
             cart.forEach(function (k, i) {
                 var p = PRODUCTS[k];
                 var div = document.createElement('div');
@@ -144,7 +144,7 @@
         function closeCart() { ov.classList.remove('open'); panel.classList.remove('open'); }
 
         document.querySelectorAll('[data-add]').forEach(function (btn) {
-            btn.dataset.label = btn.textContent;
+            btn.dataset.label = btn.textContent.trim();
             btn.addEventListener('click', function () {
                 var k = btn.dataset.add;
                 if (cart.indexOf(k) < 0) cart.push(k);
