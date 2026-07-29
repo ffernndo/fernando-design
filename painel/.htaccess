@@ -1,6 +1,13 @@
 DirectoryIndex index.php
 Options -Indexes
 
+# o painel só atende no subdomínio; pelo domínio principal, redireciona
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^(www\.)?ffernando\.com$ [NC]
+  RewriteRule ^(.*)$ https://painel.ffernando.com/$1 [R=301,L]
+</IfModule>
+
 # nunca indexar o painel
 <IfModule mod_headers.c>
   Header set X-Robots-Tag "noindex, nofollow"

@@ -34,6 +34,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redir('post-edit.php?id=' . $id);
     }
 
+    if ($acao === 'excluir_post' && $post) {
+        if ($post['status'] === 'publicado') {
+            flash('erro', 'Post publicado não pode ser excluído aqui — a API do Instagram não apaga publicação.');
+            redir('post-edit.php?id=' . $id);
+        }
+        foreach (q_all('SELECT * FROM midias WHERE post_id=?', [$id]) as $m) {
+            @unlink(PAINEL_MIDIA_DIR . '/' . $m['arquivo']);
+        }
+        $primeira = (string) (q_val('SELECT arquivo FROM midias WHERE post_id=? LIMIT 1', [$id]) ?? '');
+        q('DELETE FROM midias WHERE post_id=?', [$id]);
+        q('DELETE FROM posts WHERE id=?', [$id]);
+        if ($primeira !== '' && str_contains($primeira, '/')) {
+            @rmdir(PAINEL_MIDIA_DIR . '/' . dirname($primeira));
+        }
+        flash('ok', 'Post excluído.');
+        redir('index.php');
+    }
+
     if ($acao === 'mover_midia') {
         $mid = (int) ($_POST['midia_id'] ?? 0);
         $dir = ($_POST['dir'] ?? 'cima') === 'cima' ? -1 : 1;
@@ -227,6 +245,7 @@ function normalizar_imagem(string $origem, string $destino): ?array
         return null;
     }
     @chmod($destino, 0644);
+    clearstatcache(true, $destino);
     return ['w' => $w, 'h' => $h, 'bytes' => filesize($destino)];
 }
 
@@ -306,6 +325,13 @@ flash_render();
     <button type="submit" name="e_agendar" value="1" class="alt" <?= $bloqueado ? 'disabled' : '' ?>>Salvar e agendar</button>
   </div>
 </form>
+
+<?php if ($post && !$bloqueado): ?>
+<form method="post" class="inline" onsubmit="return confirm('Excluir este post e a mídia enviada?')">
+  <input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>">
+  <button class="mini fraco" name="acao" value="excluir_post">Excluir post</button>
+</form>
+<?php endif; ?>
 
 <?php if ($midias): ?>
 <h2>Mídia (<?= count($midias) ?>)</h2>
