@@ -1,2 +1,5 @@
 # Bloqueia acesso publico ao repositorio git
 RedirectMatch 404 /\.git
+
+# Prioridade do index do site
+DirectoryIndex index.html index.php
