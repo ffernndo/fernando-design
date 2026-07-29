@@ -1,0 +1,2 @@
+# Bloqueia acesso publico ao repositorio git
+RedirectMatch 404 /\.git
