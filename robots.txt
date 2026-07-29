@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ffernndo.github.io/fernando-design/sitemap.xml
+Sitemap: https://ffernando.com/sitemap.xml
