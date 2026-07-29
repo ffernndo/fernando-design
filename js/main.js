@@ -126,3 +126,22 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
 
 })();
+
+/* ══ Meta Pixel: eventos ══ */
+(function () {
+    if (typeof fbq !== 'function') return;
+
+    /* Contact — clique em qualquer link de WhatsApp */
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+        if (a) fbq('track', 'Contact', { content_name: document.title });
+    });
+
+    /* ViewContent — páginas de case */
+    if (location.pathname.indexOf('case-') > -1) {
+        fbq('track', 'ViewContent', {
+            content_type: 'case',
+            content_name: document.title
+        });
+    }
+})();
