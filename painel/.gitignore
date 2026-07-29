@@ -1,0 +1,4 @@
+# segredos e mídia enviada nunca vão para o repositório
+lib/config.local.php
+/midia/*
+!/midia/.htaccess

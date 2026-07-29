@@ -1,0 +1,26 @@
+DirectoryIndex index.php
+Options -Indexes
+
+# nunca indexar o painel
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+  Header set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "same-origin"
+</IfModule>
+
+# uploads maiores (carrossel e vídeo)
+<IfModule mod_php.c>
+  php_value upload_max_filesize 64M
+  php_value post_max_size 80M
+  php_value max_execution_time 300
+</IfModule>
+
+# a mídia precisa ser pública: é ela que a API do Instagram baixa
+<FilesMatch "\.(jpe?g|png|mp4|webp)$">
+  Require all granted
+</FilesMatch>
+
+# nada de acesso direto à configuração
+<FilesMatch "^config\.local\.php$">
+  Require all denied
+</FilesMatch>
