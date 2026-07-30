@@ -805,7 +805,6 @@ section { background: var(--bg); color: var(--text); }
     border-radius: 0 var(--radius-card) var(--radius-card) 0;
     background: var(--surface);
     display: grid; gap: 16px;
-    max-width: 64em;
 }
 .express-note .k {
     font-family: var(--font-mono); font-weight: 700; font-size: 13px;
@@ -1038,7 +1037,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
     display: flex; gap: 14px; align-items: flex-start;
     margin-top: clamp(22px, 2.6vw, 34px); padding: 18px 20px;
     background: var(--surface); border: 1px solid var(--line);
-    border-radius: var(--radius-card); max-width: 62em;
+    border-radius: var(--radius-card);
 }
 .prova-nota .k {
     font-family: var(--font-mono); font-weight: 700; font-size: 11px;
@@ -1146,3 +1145,16 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
     background: rgba(159,246,144,.14); color: var(--accent);
     padding: 4px 9px; border-radius: 100px; font-weight: 700; letter-spacing: .08em;
 }
+
+
+/* — caixas de largura total, texto com medida de leitura — */
+.prova-nota p { max-width: 78ch; }
+.express-note p { max-width: 82ch; }
+
+/* — cards de oferta e pilares: mesma altura, base alinhada — */
+.ofertas-grid, .pilares-grid { align-items: stretch; }
+.ofertas-grid > *, .pilares-grid > * { height: 100%; }
+.pilar-card { display: flex; flex-direction: column; }
+
+/* — CTA do rodapé alinhado à esquerda, como o resto da página — */
+.cta-footer .hero-actions { justify-content: flex-start; }
