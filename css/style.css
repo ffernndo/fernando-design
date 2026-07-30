@@ -1095,9 +1095,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 /* selo de pagamento dentro do card */
 
 
-/* — caixas de largura total, texto com medida de leitura — */
-.prova-nota p { max-width: 78ch; }
-.express-note p { max-width: 82ch; }
 
 /* — cards de oferta e pilares: mesma altura, base alinhada — */
 .pilares-grid { align-items: stretch; }
@@ -1160,13 +1157,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 /* ══ Carrossel infinito de fotos (prova do Retrato Pro) ══ */
 .carrossel-fotos {
     overflow: hidden; margin-top: clamp(28px, 3.5vw, 48px);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
 }
 .cf-track { display: flex; width: max-content; animation: cf-scroll 120s linear infinite; }
 .carrossel-fotos:hover .cf-track { animation-play-state: paused; }
 .cf-track figure {
-    margin: 0 12px 0 0; position: relative; flex: none;
+    margin: 0 8px 0 0; position: relative; flex: none; cursor: zoom-in;
     width: clamp(130px, 14vw, 185px);
     border-radius: var(--radius-card); overflow: hidden;
     border: 1px solid var(--line); background: var(--surface);
@@ -1177,3 +1173,87 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
     .cf-track { animation: none; }
     .carrossel-fotos { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
 }
+
+
+/* ══ Preço nos painéis de serviço ══ */
+.pn-preco { margin: 22px 0 0; font-family: var(--font-mono); }
+.pn-preco b { font-weight: 700; font-size: clamp(20px, 2vw, 26px); }
+.pn-preco span { display: block; font-size: 13px; color: var(--dim); margin-top: 4px; letter-spacing: .03em; }
+
+/* ══ Metodologia v2 · lista editorial numerada ══ */
+.met-list { margin-top: clamp(28px, 3.5vw, 48px); border-top: 1px solid var(--line); }
+.met-row {
+    display: grid; grid-template-columns: 88px minmax(0, 1fr) auto;
+    gap: clamp(18px, 2.5vw, 40px); align-items: center;
+    padding: clamp(24px, 3vw, 40px) clamp(10px, 1.4vw, 22px);
+    border-bottom: 1px solid var(--line);
+    transition: background .25s ease;
+}
+.met-row:hover { background: var(--surface); }
+.met-n {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(34px, 3.6vw, 52px); line-height: 1;
+    color: transparent; -webkit-text-stroke: 1.2px var(--accent-2);
+}
+.met-tx h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(21px, 2.2vw, 30px); margin: 0; }
+.met-tx p { margin: 8px 0 0; font-size: 14.5px; color: var(--muted); line-height: 1.7; max-width: 62ch; }
+.met-chip {
+    font-family: var(--font-mono); font-weight: 700; font-size: 10.5px;
+    letter-spacing: .14em; white-space: nowrap;
+    color: var(--accent-2); border: 1px solid var(--line);
+    padding: 8px 14px; border-radius: 100px;
+    transition: border-color .25s ease;
+}
+.met-row:hover .met-chip { border-color: var(--accent-2); }
+@media (max-width: 820px) {
+    .met-row { grid-template-columns: 56px 1fr; }
+    .met-chip { grid-column: 2; justify-self: start; }
+}
+
+/* ══ Sobre v2 ══ */
+.sobre2 {
+    display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+    gap: clamp(30px, 4.5vw, 72px); align-items: center;
+    margin-top: clamp(28px, 3.5vw, 48px);
+}
+.sobre2-foto { margin: 0; position: relative; }
+.sobre2-foto img {
+    width: 100%; height: auto; display: block;
+    border-radius: var(--radius-card); border: 1px solid var(--line);
+}
+.sobre2-foto::before {
+    content: ""; position: absolute; inset: 14px -14px -14px 14px;
+    border: 1px solid var(--accent-2); border-radius: var(--radius-card);
+    z-index: -1; opacity: .55;
+}
+.sobre2-foto figcaption {
+    display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+    margin-top: 14px; font-family: var(--font-mono); font-weight: 700;
+    font-size: 10.5px; letter-spacing: .14em; color: var(--dim);
+}
+.sobre2-foto figcaption span:first-child { color: var(--accent); }
+.sobre2-lead {
+    margin: 0; font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(24px, 2.8vw, 38px); line-height: 1.25;
+}
+.sobre2-lead em { font-style: italic; font-weight: 400; color: var(--accent-2); }
+.sobre2-p { margin: 18px 0 0; font-size: 15px; color: var(--muted); line-height: 1.75; }
+.sobre2-stats {
+    display: flex; gap: clamp(20px, 3vw, 44px); flex-wrap: wrap;
+    margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line);
+}
+.sobre2-stats b { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); }
+.sobre2-stats span { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .14em; color: var(--dim); }
+.sobre2-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+@media (max-width: 860px) { .sobre2 { grid-template-columns: 1fr; } }
+
+/* ══ Lightbox do carrossel ══ */
+.lightbox {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(1, 12, 9, .92);
+    display: flex; align-items: center; justify-content: center;
+    padding: 4vh 4vw; opacity: 0; pointer-events: none;
+    transition: opacity .25s ease; cursor: zoom-out;
+}
+.lightbox.on { opacity: 1; pointer-events: auto; }
+.lightbox img { max-width: 100%; max-height: 100%; border-radius: 14px; border: 1px solid var(--line); }

@@ -20,6 +20,27 @@
         track.innerHTML += track.innerHTML;
     });
 
+    /* Lightbox do carrossel de fotos (variáveis próprias — não colidir com o lb das galerias) */
+    var cfCar = document.querySelector('.carrossel-fotos');
+    if (cfCar) {
+        var cfLb = document.createElement('div');
+        cfLb.className = 'lightbox';
+        cfLb.setAttribute('role', 'dialog');
+        cfLb.setAttribute('aria-label', 'Foto ampliada');
+        cfLb.innerHTML = '<img alt="Foto ampliada">';
+        document.body.appendChild(cfLb);
+        cfCar.addEventListener('click', function (e) {
+            var img = e.target.closest('img');
+            if (!img) return;
+            cfLb.querySelector('img').src = img.getAttribute('data-full') || img.src;
+            cfLb.classList.add('on');
+        });
+        cfLb.addEventListener('click', function () { cfLb.classList.remove('on'); });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') cfLb.classList.remove('on');
+        });
+    }
+
     /* Reveal on scroll */
     var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
