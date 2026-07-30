@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script>
+/* Redirect: Pages -> dominio oficial (o Pages segue como host de midia) */
+if (location.hostname === 'ffernndo.github.io') {
+  location.replace('https://ffernando.com' + location.pathname.replace('/fernando-design', '') + location.search + location.hash);
+}
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedido recebido · fernando_</title>
+<meta name="description" content="Confirmação de pedido e próximos passos.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://ffernando.com/obrigado.html">
+<meta property="og:title" content="Pedido recebido · fernando_">
+<meta property="og:description" content="Confirmação de pedido e próximos passos.">
+<meta property="og:url" content="https://ffernando.com/obrigado.html">
+<meta property="og:image" content="https://ffernando.com/assets/img/og.png">
+<style>
+  :root{
+    --bg:#010f0c; --surface:#07231c; --line:#12362c;
+    --text:#eaf6f0; --muted:#9db3aa; --mint:#9ff690;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px; margin:0 auto; padding:88px 24px 96px}
+  .eyebrow{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--mint); margin:0 0 14px
+  }
+  h1{font-size:clamp(30px,5vw,44px); line-height:1.12; margin:0 0 14px; letter-spacing:-.02em}
+  .lead{color:#d3e5dc; font-size:17px; margin:0 0 36px}
+  h2{font-size:18px; margin:36px 0 12px; letter-spacing:-.01em}
+  p,li{color:#d3e5dc; font-size:16px}
+  ol{padding-left:20px; margin:12px 0}
+  li{margin:9px 0}
+  a{color:var(--mint); text-decoration:none; border-bottom:1px solid rgba(159,246,144,.35)}
+  a:hover{border-bottom-color:var(--mint)}
+  .card{
+    background:var(--surface); border:1px solid var(--line);
+    border-radius:14px; padding:22px 24px; margin:28px 0
+  }
+  .card p{margin:0}
+  .btn{
+    display:inline-block; margin-top:8px; padding:14px 22px;
+    background:var(--mint); color:#04140f; border:0; border-radius:10px;
+    font-weight:600; letter-spacing:.02em; text-decoration:none
+  }
+  .btn:hover{filter:brightness(1.06)}
+  footer{
+    margin-top:60px; padding-top:24px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:14px
+  }
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:14px}
+</style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1686723629051413');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1686723629051413&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+<!-- ⚠ Esta página NÃO dispara Purchase: retorno de checkout não prova pagamento.
+     A confirmação real vem do webhook do gateway (ver claude/checkout-pagamentos-site.md). -->
+</head>
+<body>
+<main class="wrap">
+  <p class="eyebrow">// Pedido recebido</p>
+  <h1>Recebi o seu pedido.</h1>
+  <p class="lead">O comprovante chega no seu e-mail assim que o pagamento for confirmado pelo banco — no Pix é quase imediato, no cartão pode levar alguns minutos.</p>
+
+  <div class="card">
+    <p>Se você fechou a tela antes de finalizar, nada foi perdido: o link continua valendo. Me chama no WhatsApp e eu reenvio.</p>
+  </div>
+
+  <h2>O que acontece agora</h2>
+  <ol>
+    <li><strong>Confirmação.</strong> Você recebe o comprovante por e-mail. Eu recebo o aviso do pagamento no mesmo instante.</li>
+    <li><strong>Briefing.</strong> Em até algumas horas eu te mando o formulário de briefing pelo WhatsApp. É curto e objetivo — é dele que sai o material.</li>
+    <li><strong>Produção.</strong> O prazo começa a contar da resposta do briefing, não do pagamento. Assim ninguém perde dia esperando informação.</li>
+    <li><strong>Entrega e ajuste.</strong> Você recebe para revisar, com a rodada de ajustes já incluída no escopo.</li>
+  </ol>
+
+  <h2>Quer adiantar?</h2>
+  <p>Me manda uma mensagem agora com o nome do seu negócio e o que você tem pronto (logo, fotos, textos). Quanto mais cedo isso chega, mais cedo o prazo começa.</p>
+  <p><a class="btn" href="https://wa.me/5521990228622?text=Oi%2C%20Fernando!%20Acabei%20de%20fazer%20um%20pedido%20pelo%20site." target="_blank" rel="noopener">FALAR NO WHATSAPP ↗</a></p>
+
+  <h2>Alguma coisa errada?</h2>
+  <p>Se o valor, o produto ou o e-mail do comprovante não conferem, escreve para <a href="mailto:fernando.cezar.f.s@gmail.com">fernando.cezar.f.s@gmail.com</a> ou chama no WhatsApp. Compra online tem <strong>7 dias de arrependimento</strong> pelo Código de Defesa do Consumidor, e eu respeito o prazo sem discussão.</p>
+
+  <footer>
+    <p><a href="./">← Voltar para o site</a> · <a href="privacidade.html">Política de privacidade</a></p>
+  </footer>
+</main>
+</body>
+</html>
