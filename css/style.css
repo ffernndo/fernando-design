@@ -1002,3 +1002,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
     .dec { grid-template-columns: 1fr; gap: 10px; }
     .dec .n { padding-top: 0; }
 }
+
+/* ══ Loja: pilha de cards de produto ══ */
+.pn-list { display: grid; gap: 18px; }
+.express-note a + a { margin-left: 18px; }
+.pn h3 em { font-style: normal; font-family: var(--font-mono); font-size: .5em; color: var(--dim); letter-spacing: .04em; }

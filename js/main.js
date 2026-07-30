@@ -145,3 +145,19 @@
         });
     }
 })();
+
+/* ══ Loja: InitiateCheckout no clique de compra ══ */
+(function () {
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a.js-buy, a[href*="asaas.com/c/"]');
+        if (!a) return;
+        if (typeof fbq !== 'function') return;
+        var v = parseFloat(a.getAttribute('data-valor') || '0');
+        fbq('track', 'InitiateCheckout', {
+            content_name: a.getAttribute('data-produto') || document.title,
+            value: isNaN(v) ? 0 : v,
+            currency: 'BRL',
+            num_items: 1
+        });
+    });
+})();
