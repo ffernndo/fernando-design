@@ -1050,58 +1050,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 /* — ações sob um bloco de prova — */
 .prova-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: clamp(24px, 3vw, 36px); }
 
-/* — cards de oferta com imagem — */
-.ofertas-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: clamp(14px, 1.6vw, 22px);
-}
 .oferta {
     display: flex; flex-direction: column;
     background: var(--surface); border: 1px solid var(--line);
     border-radius: var(--radius-card); overflow: hidden;
     transition: transform .25s ease, border-color .25s ease;
 }
-.oferta:hover { transform: translateY(-4px); border-color: var(--accent-2); }
-.oferta.destaque { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
-.of-img { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #051914; }
-/* scrim no topo: o selo precisa de leitura sobre qualquer imagem */
-.of-img::after {
-    content: ""; position: absolute; inset: 0 0 auto 0; height: 42%;
-    background: linear-gradient(to bottom, rgba(1,15,12,.72), rgba(1,15,12,0));
-    pointer-events: none;
-}
-.of-img .selo { z-index: 2; }
 .of-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.of-img .selo {
-    position: absolute; top: 10px; left: 10px;
-    font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-    letter-spacing: .12em; text-transform: uppercase;
-    background: var(--accent); color: var(--accent-ink);
-    padding: 5px 10px; border-radius: 100px;
-}
-.of-body { padding: clamp(20px, 2.2vw, 28px); display: flex; flex-direction: column; flex: 1; }
-.of-k {
-    font-family: var(--font-mono); font-weight: 700; font-size: 11px;
-    letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2);
-}
-.of-body h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 2.2vw, 28px); margin: 12px 0 0; }
-.of-preco {
-    font-family: var(--font-mono); font-weight: 700; font-size: 20px;
-    color: var(--text); margin: 10px 0 0;
-}
-.of-preco span { font-size: 12px; color: var(--dim); font-weight: 400; letter-spacing: .04em; }
 .of-list { list-style: none; padding: 0; margin: 18px 0 0; }
-.of-list li {
-    font-size: 14px; color: var(--muted); padding-left: 20px; position: relative; margin: 9px 0; line-height: 1.6;
-}
-.of-list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-2); font-size: 13px; }
-.of-foot { margin-top: auto; padding-top: 22px; }
-.of-foot .btn { width: 100%; }
-.of-nota {
-    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .08em;
-    text-transform: uppercase; color: var(--dim); margin: 10px 0 0; text-align: center;
-}
-@media (max-width: 940px) { .ofertas-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; } }
+@media (max-width: 940px) {  }
 
 /* — mosaico de posts publicados — */
 .posts-grid {
@@ -1136,15 +1093,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .pagamento span.txt b { color: var(--text); }
 
 /* selo de pagamento dentro do card */
-.of-pay {
-    display: flex; align-items: center; gap: 8px; margin: 14px 0 0;
-    font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em;
-    text-transform: uppercase; color: var(--dim);
-}
-.of-pay b {
-    background: rgba(159,246,144,.14); color: var(--accent);
-    padding: 4px 9px; border-radius: 100px; font-weight: 700; letter-spacing: .08em;
-}
 
 
 /* — caixas de largura total, texto com medida de leitura — */
@@ -1152,9 +1100,87 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .express-note p { max-width: 82ch; }
 
 /* — cards de oferta e pilares: mesma altura, base alinhada — */
-.ofertas-grid, .pilares-grid { align-items: stretch; }
-.ofertas-grid > *, .pilares-grid > * { height: 100%; }
+.pilares-grid { align-items: stretch; }
+.pilares-grid > * { height: 100%; }
 .pilar-card { display: flex; flex-direction: column; }
 
 /* — CTA do rodapé alinhado à esquerda, como o resto da página — */
 .cta-footer .hero-actions { justify-content: flex-start; }
+
+
+/* ══ Ofertas v2 · linhas horizontais, mídia em proporção nativa ══ */
+.ofr-list { display: grid; gap: clamp(18px, 2.2vw, 30px); }
+.ofr {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 46%);
+    gap: clamp(26px, 3.4vw, 56px); align-items: center;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius-card); padding: clamp(24px, 3.2vw, 48px);
+    transition: border-color .25s ease;
+}
+.ofr:hover { border-color: var(--accent-2); }
+.ofr.destaque { border-color: var(--accent); }
+.ofr-chip {
+    display: inline-block; font-family: var(--font-mono); font-weight: 700;
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    background: rgba(159,246,144,.14); color: var(--accent);
+    padding: 5px 11px; border-radius: 100px; margin-bottom: 16px;
+}
+.theme-light .ofr-chip { background: rgba(47,122,46,.1); color: #2f7a2e; }
+.ofr-k {
+    font-family: var(--font-mono); font-weight: 700; font-size: 11px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2);
+    display: block;
+}
+.ofr h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 2.6vw, 34px); margin: 10px 0 0; }
+.ofr-preco { margin: 12px 0 0; font-family: var(--font-mono); }
+.ofr-preco b { font-weight: 700; font-size: clamp(22px, 2.2vw, 28px); }
+.ofr-preco span { display: block; font-size: 13px; color: var(--dim); margin-top: 4px; letter-spacing: .03em; }
+.ofr-preco span em { font-style: normal; color: var(--text); font-weight: 700; }
+.ofr ul { list-style: none; padding: 0; margin: 20px 0 0; }
+.ofr ul li { font-size: 14.5px; color: var(--muted); padding-left: 20px; position: relative; margin: 9px 0; line-height: 1.6; }
+.ofr ul li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-2); font-size: 13px; }
+.ofr-cta { margin-top: 26px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.ofr-media { display: grid; gap: 12px; min-width: 0; }
+.ofr-media.duo { grid-template-columns: 1fr 1fr; }
+.ofr-media figure { margin: 0; position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.ofr-media img { width: 100%; height: auto; display: block; }   /* proporção nativa — nunca corta, nunca estica */
+.ofr-media figcaption {
+    position: absolute; left: 10px; bottom: 10px;
+    font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #eaf6f0; background: rgba(1,15,12,.72);
+    padding: 4px 9px; border-radius: 100px; backdrop-filter: blur(4px);
+}
+@media (max-width: 900px) {
+    .ofr { grid-template-columns: 1fr; }
+    .ofr-media { order: -1; }
+    .ofr-cta .btn { width: 100%; }
+}
+
+/* ══ Carrossel infinito de fotos (prova do Retrato Pro) ══ */
+.carrossel-fotos {
+    overflow: hidden; margin-top: clamp(28px, 3.5vw, 48px);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.cf-track { display: flex; width: max-content; animation: cf-scroll 55s linear infinite; }
+.carrossel-fotos:hover .cf-track { animation-play-state: paused; }
+.cf-track figure {
+    margin: 0 14px 0 0; position: relative; flex: none;
+    width: clamp(180px, 20vw, 250px);
+    border-radius: var(--radius-card); overflow: hidden;
+    border: 1px solid var(--line); background: var(--surface);
+}
+.cf-track img { width: 100%; height: auto; display: block; }
+.cf-track figcaption {
+    position: absolute; left: 10px; bottom: 10px;
+    font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text); background: rgba(1,15,12,.72);
+    padding: 4px 9px; border-radius: 100px; backdrop-filter: blur(4px);
+}
+@keyframes cf-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+    .cf-track { animation: none; }
+    .carrossel-fotos { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
+}
