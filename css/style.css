@@ -1144,7 +1144,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .ofr-media.duo { grid-template-columns: 1fr 1fr; }
 .ofr-media figure { margin: 0; position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
 .ofr-media img { width: 100%; height: auto; display: block; }   /* proporção nativa — nunca corta, nunca estica */
-.ofr-media figcaption {
+.ofr-media figcaption {   /* usado só para selos tipo "no ar" — nunca para nome de pessoa */
     position: absolute; left: 10px; bottom: 10px;
     font-family: var(--font-mono); font-size: 10px; font-weight: 700;
     letter-spacing: .12em; text-transform: uppercase;
@@ -1163,22 +1163,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
-.cf-track { display: flex; width: max-content; animation: cf-scroll 55s linear infinite; }
+.cf-track { display: flex; width: max-content; animation: cf-scroll 120s linear infinite; }
 .carrossel-fotos:hover .cf-track { animation-play-state: paused; }
 .cf-track figure {
-    margin: 0 14px 0 0; position: relative; flex: none;
-    width: clamp(180px, 20vw, 250px);
+    margin: 0 12px 0 0; position: relative; flex: none;
+    width: clamp(130px, 14vw, 185px);
     border-radius: var(--radius-card); overflow: hidden;
     border: 1px solid var(--line); background: var(--surface);
 }
 .cf-track img { width: 100%; height: auto; display: block; }
-.cf-track figcaption {
-    position: absolute; left: 10px; bottom: 10px;
-    font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-    letter-spacing: .1em; text-transform: uppercase;
-    color: var(--text); background: rgba(1,15,12,.72);
-    padding: 4px 9px; border-radius: 100px; backdrop-filter: blur(4px);
-}
 @keyframes cf-scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
     .cf-track { animation: none; }
