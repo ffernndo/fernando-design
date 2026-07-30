@@ -856,6 +856,9 @@ section { background: var(--bg); color: var(--text); }
 .apps-row.apps-3 { grid-template-columns: repeat(3, 1fr); }
 .app-fig.ar-45 .frame { aspect-ratio: 4 / 5; }
 .app-fig.ar-45 img { object-fit: contain; background: var(--surface-2); }
+.apps-row.apps-doc { grid-template-columns: 1fr 1fr; }
+.apps-row.apps-full { grid-template-columns: 1fr; }
+.app-fig.ar-doc .frame { aspect-ratio: 16 / 10; }
 .app-fig figcaption { font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: .05em; color: var(--muted); }
 
 /* Lightbox simples */
@@ -985,6 +988,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
     .concepts-grid, .concepts-grid .wide-row,
     .cases-grid, .apps-row { grid-template-columns: 1fr; }
     .apps-row.apps-3 { grid-template-columns: 1fr; }
+    .apps-row.apps-doc { grid-template-columns: 1fr; }
     .palette-row { grid-template-columns: repeat(2, 1fr); }
     .hero-actions .btn { width: 100%; }
     .proj-row { flex-wrap: wrap; gap: 12px; }
