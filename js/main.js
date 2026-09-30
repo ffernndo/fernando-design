@@ -152,10 +152,10 @@
 (function () {
     if (typeof fbq !== 'function') return;
 
-    /* Contact — clique em qualquer link de WhatsApp */
+    /* Contact: clique em link de WhatsApp ou e-mail */
     document.addEventListener('click', function (e) {
-        var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
-        if (a) fbq('track', 'Contact', { content_name: document.title });
+        var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href^="mailto:"]');
+        if (a) fbq('track', 'Contact', { content_name: document.title, content_category: a.href.indexOf('mailto:') === 0 ? 'email' : 'whatsapp' });
     });
 
     /* ViewContent — páginas de case */
@@ -165,20 +165,4 @@
             content_name: document.title
         });
     }
-})();
-
-/* ══ Loja: InitiateCheckout no clique de compra ══ */
-(function () {
-    document.addEventListener('click', function (e) {
-        var a = e.target.closest && e.target.closest('a.js-buy, a[href*="asaas.com/c/"]');
-        if (!a) return;
-        if (typeof fbq !== 'function') return;
-        var v = parseFloat(a.getAttribute('data-valor') || '0');
-        fbq('track', 'InitiateCheckout', {
-            content_name: a.getAttribute('data-produto') || document.title,
-            value: isNaN(v) ? 0 : v,
-            currency: 'BRL',
-            num_items: 1
-        });
-    });
 })();

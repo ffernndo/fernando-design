@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ffernando.com/</loc><lastmod>2026-07-25</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://ffernando.com/portfolio.html</loc><lastmod>2026-07-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ffernando.com/loja.html</loc><lastmod>2026-07-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ffernando.com/case-camilla.html</loc><lastmod>2026-07-25</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ffernando.com/case-itscool.html</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ffernando.com/case-fernando.html</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ffernando.com/case-webapps.html</loc><lastmod>2026-07-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://ffernando.com/</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/"/></url>
+  <url><loc>https://ffernando.com/en/</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/"/></url>
+  <url><loc>https://ffernando.com/portfolio.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/portfolio.html"/></url>
+  <url><loc>https://ffernando.com/en/portfolio.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/portfolio.html"/></url>
+  <url><loc>https://ffernando.com/case-camilla.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/case-camilla.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/case-camilla.html"/></url>
+  <url><loc>https://ffernando.com/en/case-camilla.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/case-camilla.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/case-camilla.html"/></url>
+  <url><loc>https://ffernando.com/case-itscool.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/case-itscool.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/case-itscool.html"/></url>
+  <url><loc>https://ffernando.com/en/case-itscool.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/case-itscool.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/case-itscool.html"/></url>
+  <url><loc>https://ffernando.com/case-fernando.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/case-fernando.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/case-fernando.html"/></url>
+  <url><loc>https://ffernando.com/en/case-fernando.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/case-fernando.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/case-fernando.html"/></url>
+  <url><loc>https://ffernando.com/case-webapps.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/case-webapps.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/case-webapps.html"/></url>
+  <url><loc>https://ffernando.com/en/case-webapps.html</loc><lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://ffernando.com/case-webapps.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ffernando.com/en/case-webapps.html"/></url>
+  <url><loc>https://ffernando.com/privacidade.html</loc><lastmod>2026-09-30</lastmod></url>
 </urlset>

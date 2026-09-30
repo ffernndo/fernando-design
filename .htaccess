@@ -3,3 +3,7 @@ RedirectMatch 404 /\.git
 
 # Prioridade do index do site
 DirectoryIndex index.html index.php
+
+# v5 (30/09/2026): loja e retorno do checkout saíram do site
+Redirect 301 /loja.html https://ffernando.com/
+Redirect 301 /obrigado.html https://ffernando.com/
