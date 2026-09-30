@@ -33,7 +33,13 @@ if (location.hostname === 'ffernndo.github.io') {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Lora:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=11">
+    <link rel="stylesheet" href="css/style.css?v=12">
+    <script>
+    /* Tela de idioma: só na home PT, só na primeira visita. Escolha fica salva. */
+    (function(){var p=null;try{p=localStorage.getItem('ff_lang')}catch(e){}
+    if(p==='en'){location.replace('en/');return}
+    if(!p){document.documentElement.classList.add('lang-gate')}})();
+    </script>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"ProfessionalService","name":"fernando_",
      "description":"Identidade visual, sites, social media e vídeo. Trabalhos reais, do briefing ao ar. Peça um orçamento pelo WhatsApp ou e-mail.","url":"https://ffernando.com/","image":"https://ffernando.com/assets/img/og.png",
@@ -219,6 +225,6 @@ src="https://www.facebook.com/tr?id=1686723629051413&ev=PageView&noscript=1"/></
     </div>
 </footer>
 
-<script src="js/main.js?v=11"></script>
+<script src="js/main.js?v=12"></script>
 </body>
 </html>
